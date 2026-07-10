@@ -46,9 +46,8 @@ export function buildMetadata({ title, description, path }: PageSeoInput): Metad
       description: pageDescription,
       images: [siteConfig.seo.ogImage],
     },
-    // Google Search Console verification
-    ...(siteConfig.analytics.gscVerification
-      ? { verification: { google: siteConfig.analytics.gscVerification } }
+    ...(siteConfig.gscVerification
+      ? { verification: { google: siteConfig.gscVerification } }
       : {}),
   };
 }

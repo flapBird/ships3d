@@ -4,6 +4,7 @@ import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/site.config";
+import { env } from "@/lib/env";
 import { buildMetadata } from "@/lib/seo";
 import "./globals.css";
 
@@ -43,11 +44,20 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
 
+        {/* Google AdSense — injected in <head> when client ID is set */}
+        {env.adsenseClientId && (
+          <Script
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${env.adsenseClientId}`}
+            strategy="beforeInteractive"
+            crossOrigin="anonymous"
+          />
+        )}
+
         {/* Google Analytics 4 — only injected when gaId is set */}
-        {siteConfig.analytics.gaId && (
+        {env.gaId && (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.gaId}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${env.gaId}`}
               strategy="afterInteractive"
             />
             <Script id="ga-init" strategy="afterInteractive">
@@ -55,7 +65,7 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${siteConfig.analytics.gaId}');
+                gtag('config', '${env.gaId}');
               `}
             </Script>
           </>

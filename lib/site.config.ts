@@ -84,20 +84,8 @@ export const siteConfig = {
     lastUpdated: "2026-07-10",
   },
 
-  ads: {
-    /**
-     * Keep false until AdSense is approved and real ad code is added.
-     * When true, sidebar and rectangle ad slots appear on the page.
-     */
-    enabled: false,
-  },
-
-  analytics: {
-    /** Google Analytics 4 measurement ID, e.g. G-XXXXXXXX. Leave empty to skip GA. */
-    gaId: "",
-    /** Google Search Console verification code. Leave empty to skip. */
-    gscVerification: "",
-  },
+  /** Google Search Console verification code. Leave empty to skip. */
+  gscVerification: "",
 } as const;
 
 export type SiteConfig = typeof siteConfig;

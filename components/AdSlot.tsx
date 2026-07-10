@@ -1,4 +1,5 @@
-import { siteConfig } from "@/lib/site.config";
+import { env } from "@/lib/env";
+import Script from "next/script";
 
 interface AdSlotProps {
   type: "sidebar" | "rectangle" | "banner";
@@ -6,15 +7,13 @@ interface AdSlotProps {
 }
 
 /**
- * AdSlot — placeholder for future AdSense integration.
+ * AdSlot — renders AdSense ad units when the env has an AdSense client ID.
  *
- * When ads.enabled is false (default), this component renders a placeholder.
- * After AdSense approval:
- * 1. Replace the placeholder div with a real <ins class="adsbygoogle"> element.
- * 2. Set siteConfig.ads.enabled = true.
+ * Set NEXT_PUBLIC_ADSENSE_CLIENT_ID in your .env.local to activate ads.
+ * Ad units use automatic size matching when possible.
  */
 export default function AdSlot({ type, className = "" }: AdSlotProps) {
-  if (!siteConfig.ads.enabled) return null;
+  if (!env.adsEnabled) return null;
 
   const sizeStyles = {
     sidebar: "w-[160px] min-h-[600px]",
@@ -26,7 +25,17 @@ export default function AdSlot({ type, className = "" }: AdSlotProps) {
     <div
       className={`${sizeStyles[type]} border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-50 ${className}`}
     >
-      <span className="text-gray-400 text-sm font-medium">Ad Space</span>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client={env.adsenseClientId}
+        data-ad-slot="0000000000"
+        data-ad-format={type === "banner" ? "horizontal" : "rectangle"}
+        data-full-width-responsive="true"
+      />
+      <Script id={`adsbygoogle-init-${type}`} strategy="afterInteractive">
+        {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+      </Script>
     </div>
   );
 }
