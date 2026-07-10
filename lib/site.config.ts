@@ -65,10 +65,10 @@ export const siteConfig = {
      * Bright & playful color palette.
      * Adjust per-game to match its visual style, but keep the overall bright tone.
      */
-    primary: "#e85d2c",
-    secondary: "#009bb8",
-    background: "#faf9f7",
-    surface: "#f3efe9",
+    primary: "#2a6370",
+    secondary: "#3c7d89",
+    background: "#f8f7f5",
+    surface: "#efeae4",
     textDark: "#292524",
     fontHeading: "'Nunito', sans-serif",
     fontBody: "'Quicksand', sans-serif",

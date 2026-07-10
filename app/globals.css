@@ -4,7 +4,7 @@
 
 /* Base body styles */
 body {
-  background-color: #f8f7f5;
+  background-color: #ede6de;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,9 +14,9 @@ body {
 .hero-gradient {
   background: radial-gradient(
     ellipse 80% 60% at 50% 40%,
-    rgba(232, 93, 44, 0.04),
-    rgba(0, 155, 184, 0.02) 50%,
-    #f8f7f5 100%
+    rgba(42, 99, 112, 0.06),
+    rgba(60, 125, 137, 0.03) 50%,
+    #ede6de 100%
   );
 }
 
@@ -24,7 +24,7 @@ body {
 .blob-decoration {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.05;
+  opacity: 0.07;
   pointer-events: none;
 }
 
@@ -33,7 +33,7 @@ body {
   height: 260px;
   top: 10%;
   left: 5%;
-  background: radial-gradient(circle, #ff6b35 0%, transparent 70%);
+  background: radial-gradient(circle, #2a6370 0%, transparent 70%);
   animation: float 8s ease-in-out infinite;
   animation-delay: 0s;
 }
@@ -43,7 +43,7 @@ body {
   height: 200px;
   top: 20%;
   right: 8%;
-  background: radial-gradient(circle, #00b4d8 0%, transparent 70%);
+  background: radial-gradient(circle, #3c7d89 0%, transparent 70%);
   animation: float 8s ease-in-out infinite;
   animation-delay: -4s;
 }
@@ -53,7 +53,7 @@ body {
   height: 180px;
   bottom: 15%;
   left: 12%;
-  background: radial-gradient(circle, #ff6b35 0%, transparent 70%);
+  background: radial-gradient(circle, #2a6370 0%, transparent 70%);
   animation: float 8s ease-in-out infinite;
   animation-delay: -2s;
 }
