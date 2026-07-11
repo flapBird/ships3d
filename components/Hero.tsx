@@ -9,6 +9,9 @@ export default function Hero() {
       <div className="blob-decoration blob-decoration--3" />
 
      <div className="relative z-10 max-w-5xl mx-auto text-center">
+        {/* SEO H1 — hidden visually, read by search engines and screen readers */}
+        <h1 className="sr-only">Play Ships 3D Online Free — Multiplayer Naval Battle Game</h1>
+
        {/* Game embed (idle launch screen visible immediately) */}
        <GameEmbed />
      </div>

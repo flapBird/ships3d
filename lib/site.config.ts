@@ -17,7 +17,7 @@ export const siteConfig = {
      * Homepage meta description, keep under 160 characters.
      * Describe what the game is and that it's free to play online.
      */
-    description: "Play Ships 3D online free — a multiplayer naval combat game with realistic sailing physics. Steer your ship, fire cannons, and battle players worldwide in your browser.",
+    description: "Play Ships 3D online free — a multiplayer naval combat game with sailing physics. Steer your ship, fire cannons, and battle worldwide in your browser.",
 
     /** Comma-separated keywords for the homepage. */
     keywords: ["ships 3d", "play ships 3d online", "ships 3d game", "naval battle game", "multiplayer ship game", "free online ship game", "ships 3d browser"],
