@@ -43,7 +43,7 @@ export const siteConfig = {
     aspectRatio: "16 / 9",
 
     /** Cover image shown on the idle/launch screen. Replace /public/cover.jpg. */
-    coverImage: "/cover.jpg",
+    coverImage: "/images/ships3D-desc-1.jpeg",
 
     /** Age rating for the game. */
     ageRating: "Everyone",

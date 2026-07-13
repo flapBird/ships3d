@@ -6,8 +6,9 @@ import { siteConfig } from "@/lib/site.config";
 export default function GameEmbed() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [like, setLike] = useState<"up" | "down" | null>(null);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+ const [like, setLike] = useState<"up" | "down" | null>(null);
+  const [gameState, setGameState] = useState<"idle" | "loading" | "playing">("idle");
+ const [isFullscreen, setIsFullscreen] = useState(false);
 
   // Track fullscreen state changes
   useEffect(() => {
@@ -18,9 +19,18 @@ export default function GameEmbed() {
     return () => document.removeEventListener("fullscreenchange", handleChange);
   }, []);
 
+  // Loading timer — brief transition before showing the iframe
+  useEffect(() => {
+    if (gameState === "loading") {
+      const timer = setTimeout(() => setGameState("playing"), 600);
+      return () => clearTimeout(timer);
+    }
+  }, [gameState]);
+
   const handleReload = useCallback(() => {
     if (iframeRef.current) {
       iframeRef.current.src = siteConfig.game.embedUrl;
+      setGameState("idle");
     }
   }, []);
 
@@ -46,16 +56,64 @@ export default function GameEmbed() {
         className="relative w-full rounded-xl2 overflow-hidden shadow-lg bg-gray-100"
         style={{ aspectRatio }}
       >
+        {/* ── Idle: Launch screen with Play button ── */}
+        {gameState === "idle" && (
+          <div
+            className="absolute inset-0 bg-cover bg-center flex items-center justify-center z-10"
+            style={{
+              backgroundImage: `url(${siteConfig.game.coverImage})`,
+            }}
+          >
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/45" />
+
+            {/* Play button */}
+            <button
+              onClick={() => setGameState("loading")}
+              className="relative z-10 bg-primary hover:bg-primary/90 text-white font-heading font-bold text-xl px-10 py-4 rounded-full shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Play Now
+            </button>
+          </div>
+        )}
+
+       {/* ── Loading: Spinner ── */}
+       {gameState === "loading" && (
+          <div
+            className="absolute inset-0 bg-cover bg-center flex flex-col items-center justify-center gap-4 z-10"
+            style={{
+              backgroundImage: `url(${siteConfig.game.coverImage})`,
+            }}
+          >
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/45" />
+
+            {/* Spinner */}
+            <div className="relative z-10">
+              <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+            </div>
+            <p className="relative z-10 text-white/80 text-sm font-medium">
+              Loading {siteConfig.game.name}...
+            </p>
+         </div>
+        )}
+
+        {/* ── Playing: iframe ── */}
+        {gameState === "playing" && (
         <iframe
           ref={iframeRef}
           src={siteConfig.game.embedUrl}
           className="absolute inset-0 w-full h-full"
           style={{ aspectRatio }}
-          allow="autoplay; fullscreen"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+          allow="autoplay; fullscreen; clipboard-read; clipboard-write"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"
           title={siteConfig.game.name}
           loading="eager"
         />
+        )}
       </div>
 
       {/* Toolbar: like, dislike, reload, fullscreen */}
