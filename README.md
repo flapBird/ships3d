@@ -1,117 +1,156 @@
-# Game Site Template
+# Ships 3D
 
-A reusable Next.js 14 template for building single-game "shell" sites optimized for search engine traffic. Each new game site only requires editing one config file and swapping a few images.
+> **Play online at [ships3d.xyz](https://ships3d.xyz/)**
 
-## Quick Start (5 Minutes)
+Ships 3D is a multiplayer naval combat game — you steer a warship, fire cannons at real players, and coordinate with your crew to dominate the open sea. This repository is the game site built around it: a fast, focused web wrapper that puts the game front and center with zero clutter.
 
-### 1. Create a new repo from this template
+The game itself was developed by [Yp3d](https://yp3d.com/) (ASDF Games). This site provides a clean embed with a low-friction player experience, supporting desktop and mobile browsers alike.
 
-- On GitHub, click **Use this template** → **Create a new repository**
-- Clone your new repo locally
+---
 
-### 2. Configure your site
+## Features
 
-Edit **`lib/site.config.ts`** — this is the only file you need to touch for content:
+- **Instant play** — no account, no download, just a click
+- **Cover screen** — idle launch image with a Play button, transitions into the live game
+- **Game toolbar** — Like / Dislike, Reload, and Fullscreen directly below the game
+- **Multiplayer ready** — supports Crew Codes, clans, and public servers
+- **Dark header** with site logo and navigation
+- **About, Contact, Privacy & Terms** pages
+- **YouTube gameplay video** section on the homepage (configurable)
+- **Google AdSense** support (script loaded from environment variables; ad units off by default)
+- **Google Analytics** support (configurable via environment variables)
 
-| Field | What to change |
-|-------|----------------|
-| `siteName` | Your site's display name |
-| `domain` | Full domain, e.g. `https://mygame.com` (no trailing slash) |
-| `seo.title` | Homepage `<title>` tag |
-| `seo.description` | Meta description (keep under 160 chars) |
-| `seo.keywords` | Comma-separated keyword list |
-| `game.name` | The game's name |
-| `game.genre` | Genre array for JSON-LD, e.g. `["Sports", "Basketball"]` |
-| `game.embedUrl` | The real iframe embed URL — must be replaced |
-| `game.aspectRatio` | Aspect ratio of the game (default `"16 / 9"`) |
-| `game.ageRating` | Age rating label |
-| `game.sourceAttribution` | Developer credit line |
-| `contact.email` | Your contact email |
-| `legal.lastUpdated` | Date the legal pages were last reviewed |
+---
 
-### 3. Replace placeholder images
+## Tech Stack
 
-Replace these files in `public/`:
+| Layer | Choice |
+|---|---|
+| Framework | [Next.js 14](https://nextjs.org/) (App Router) |
+| Language | TypeScript |
+| Styling | [Tailwind CSS](https://tailwindcss.com/) |
+| Fonts | Nunito (headings) + Quicksand (body) — Google Fonts |
+| Hosting | [Vercel](https://vercel.com/) |
+| Game Embed | iframe / Unity WebGL |
 
-- `cover.jpg` — Game cover / launch screen image
-- `og-image.png` — Social sharing image (1200×630px)
-- `favicon.ico` — Browser tab icon
+---
 
-### 4. Customize page content
+## Project Structure
 
-Look for `PLACEHOLDER:` markers in:
-- `app/page.tsx` — Game introduction sections
-- `app/about/page.tsx` — About page
+```
+.
+├── app/                    # Next.js App Router pages
+│   ├── about/              # About page
+│   ├── contact/            # Contact page
+│   ├── privacy/            # Privacy Policy page
+│   ├── terms/              # Terms & Conditions page
+│   ├── layout.tsx          # Root layout (header, footer, scripts)
+│   ├── page.tsx            # Homepage — game embed + introduction content
+│   ├── globals.css         # Global styles (body, hero gradient, blobs)
+│   ├── robots.ts           # robots.txt
+│   └── sitemap.ts          # sitemap.xml
+├── components/
+│   ├── GameEmbed.tsx       # Game iframe with cover screen, toolbar, fullscreen
+│   ├── Hero.tsx            # Hero section wrapping the game embed
+│   ├── Header.tsx          # Sticky site header
+│   ├── Footer.tsx          # Footer with legal links
+│   ├── SidebarLayout.tsx   # Content layout wrapper
+│   ├── AdSlot.tsx          # Ad placement (currently returns null)
+│   ├── LegalPage.tsx       # Reusable legal page layout
+│   └── SchemaMarkup.tsx    # JSON-LD structured data injection
+├── lib/
+│   ├── site.config.ts      # Single source of truth for site config
+│   ├── env.ts              # Environment variable helpers (GA, AdSense)
+│   └── seo.ts              # Metadata & JSON-LD builders
+├── public/                 # Static assets (images, favicons, etc.)
+└── ...config files
+```
 
-Always write unique content per game site to avoid duplicate-content penalties.
+---
 
-### 5. Run locally
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Install & Run
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to preview.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 6. Deploy to Vercel
+### Configuration
 
-**Recommended (GitHub integration):**
-1. In Vercel, click **New Project** → import your repo
-2. Framework Preset auto-detects Next.js — leave defaults
-3. Add environment variables from `.env.example` if needed
-4. Under **Domains**, bind your domain
-5. Deploy
+All site content lives in **`lib/site.config.ts`**:
 
-**CLI alternative:**
+- Site name, domain, game name
+- Game embed URL and aspect ratio
+- Theme colors
+- Contact email
+- YouTube video ID
+- Google Search Console verification code
+
+Sensitive credentials like Google Analytics ID and AdSense client ID are read from environment variables (see `.env.example`):
+
 ```bash
-npm i -g vercel
-vercel login
-vercel
-vercel --prod
+cp .env.example .env.local
 ```
 
-### 7. Submit to Google Search Console
+Then fill in your IDs:
 
-1. Go to [Google Search Console](https://search.google.com/search-console)
-2. Add property using domain verification
-3. Submit `sitemap.xml` (e.g. `https://your-domain.com/sitemap.xml`)
+```
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_ADSENSE_CLIENT_ID=ca-pub-xxxxxxxxxxxxxx
+```
+
+### Replace Placeholder Assets
+
+| File | Purpose |
+|---|---|
+| `public/cover.jpg` | Game cover / launch screen image |
+| `public/og-image.png` | Social sharing image (1200x630) |
+| `public/favicon.ico` | Browser tab icon |
+| `public/favicon.png` | PNG icon used in header |
+| `public/favicon.svg` | SVG vector icon |
+| `public/images/ships3d-battle-screenshot.jpg` | Gameplay screenshot 1 |
+| `public/images/ships3d-gameplay-controls.jpg` | Gameplay screenshot 2 |
 
 ---
 
-## SEO Checklist
+## Deployment
 
-- [ ] Every page has a unique `<title>` in the correct format
-- [ ] Every page `description` is under 160 characters and unique
-- [ ] Every page has a canonical URL
-- [ ] Open Graph / Twitter Card tags verified (use [opengraph.xyz](https://www.opengraph.xyz/))
-- [ ] Homepage `VideoGame` JSON-LD passes [Rich Results Test](https://search.google.com/test/rich-results)
-- [ ] `sitemap.xml` and `robots.txt` are accessible
-- [ ] Lighthouse mobile performance score ≥ 80
-- [ ] Mobile: game starts on tap, no horizontal scroll
-- [ ] All placeholder images replaced with real assets
-- [ ] Google Search Console verified and sitemap submitted
+This project is designed to deploy on **Vercel**:
 
-## AdSense (Post-Launch)
+1. Push the repo to GitHub
+2. In Vercel, create a new project and import the repository
+3. Vercel auto-detects Next.js — leave the default settings
+4. Add environment variables (`NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_ADSENSE_CLIENT_ID`)
+5. Bind your custom domain under **Domains**
+6. Deploy
 
-1. Keep `ads.enabled: false` until AdSense is approved
-2. Site should have 2+ weeks of stable traffic before applying
-3. Ensure Privacy Policy and Terms pages are accessible
-4. After approval:
-   - Replace placeholder in `components/AdSlot.tsx` with real `<ins class="adsbygoogle">`
-   - Set `ads.enabled: true` in `lib/site.config.ts`
+### Environment Variables
 
-## Tech Stack
+Set these in your Vercel project settings (or `.env.local` for local development):
 
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
-- Google Fonts (Nunito + Quicksand)
-- Vercel deployment
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_GA_ID` | No | Google Analytics measurement ID |
+| `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | No | Google AdSense publisher ID |
 
-## Notes
+---
 
-- This template supports iframe-embedded games only (no SWF/Ruffle)
-- English only; all copy is centralized in `lib/site.config.ts` for future i18n
-- Ad slots are placeholder only by default; real AdSense code must be added post-approval
-- Always verify iframe embed permissions with the game developer and maintain visible source attribution
+## Credits
+
+- **Game** — Ships 3D by [Yp3d](https://yp3d.com/) / ASDF Games
+- **Site** — built on [Next.js](https://nextjs.org/) and deployed on [Vercel](https://vercel.com/)
+
+---
+
+## License
+
+All rights reserved. This project is proprietary — the code is provided for transparency and collaboration, not for redistribution.
