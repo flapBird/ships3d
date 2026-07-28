@@ -19,8 +19,8 @@ body {
 
 .hero-gradient {
   background:
-    linear-gradient(180deg, rgba(2, 15, 26, 0.2), rgba(2, 15, 26, 0.86)),
-    radial-gradient(circle at 50% 0%, #176b80 0%, #0d4055 35%, #061c2e 75%, #041523 100%);
+    linear-gradient(180deg, rgba(3, 32, 47, 0.04), rgba(3, 25, 39, 0.52)),
+    radial-gradient(circle at 50% -20%, #2291a5 0%, #11667b 38%, #094257 72%, #062f43 100%);
 }
 
 .hero-gradient::after {

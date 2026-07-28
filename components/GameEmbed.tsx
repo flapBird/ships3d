@@ -70,82 +70,84 @@ export default function GameEmbed() {
 
   return (
     <div className="mx-auto w-full max-w-4xl">
-      <div
-        ref={containerRef}
-        className="game-shell relative w-full overflow-hidden rounded-2xl border border-white/15 bg-slate-900 shadow-2xl shadow-slate-950/35 sm:rounded-3xl"
-        style={{ aspectRatio: siteConfig.game.aspectRatio }}
-      >
-        <Image
-          src={siteConfig.game.coverImage}
-          alt=""
-          fill
-          priority
-          sizes="(max-width: 1024px) 100vw, 896px"
-          className="object-cover"
-        />
-
-        {showIframe && (
-          <iframe
-            key={loadKey}
-            src={siteConfig.game.embedUrl}
-            className="absolute inset-0 z-10 h-full w-full bg-slate-100"
-            allow="autoplay; fullscreen; clipboard-read; clipboard-write"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"
-            referrerPolicy="strict-origin-when-cross-origin"
-            title={siteConfig.game.name}
-            loading="eager"
-            onLoad={handleIframeLoad}
-            onError={() => setGameState("error")}
+      <div className="rounded-[1.75rem] border border-cyan-100/30 bg-white/15 p-2 shadow-2xl shadow-slate-950/45 backdrop-blur-sm sm:rounded-[2rem] sm:p-3">
+        <div
+          ref={containerRef}
+          className="game-shell relative w-full overflow-hidden rounded-[1.25rem] border border-white/25 bg-slate-900 sm:rounded-2xl"
+          style={{ aspectRatio: siteConfig.game.aspectRatio }}
+        >
+          <Image
+            src={siteConfig.game.coverImage}
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 896px"
+            className="object-cover"
           />
-        )}
 
-        {gameState === "idle" && (
-          <div className="absolute inset-0 z-20 flex items-center justify-center bg-slate-950/55">
-            <button
-              type="button"
-              onClick={startGame}
-              className="inline-flex min-h-14 items-center gap-3 rounded-full bg-cyan-300 px-8 text-lg font-black text-slate-950 shadow-xl transition hover:bg-cyan-200 hover:shadow-cyan-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-200 sm:px-10 sm:text-xl"
-            >
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Play Now
-            </button>
-          </div>
-        )}
+          {showIframe && (
+            <iframe
+              key={loadKey}
+              src={siteConfig.game.embedUrl}
+              className="absolute inset-0 z-10 h-full w-full bg-slate-100"
+              allow="autoplay; fullscreen; clipboard-read; clipboard-write"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title={siteConfig.game.name}
+              loading="eager"
+              onLoad={handleIframeLoad}
+              onError={() => setGameState("error")}
+            />
+          )}
 
-        {gameState === "loading" && (
-          <div
-            className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-slate-950/80 text-white backdrop-blur-sm"
-            role="status"
-            aria-live="polite"
-          >
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-white/20 border-t-cyan-300" />
-            <div className="text-center">
-              <p className="font-bold">Loading {siteConfig.game.name}…</p>
-              <p className="mt-1 text-xs text-white/60">The first launch can take a few seconds.</p>
+          {gameState === "idle" && (
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-slate-950/55">
+              <button
+                type="button"
+                onClick={startGame}
+                className="inline-flex min-h-14 items-center gap-3 rounded-full bg-cyan-300 px-8 text-lg font-black text-slate-950 shadow-xl transition hover:bg-cyan-200 hover:shadow-cyan-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-200 sm:px-10 sm:text-xl"
+              >
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                Play Now
+              </button>
             </div>
-          </div>
-        )}
+          )}
 
-        {gameState === "error" && (
-          <div
-            className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-slate-950/90 px-6 text-center text-white"
-            role="alert"
-          >
-            <p className="font-heading text-xl font-black">The game is taking longer than expected.</p>
-            <p className="mt-2 max-w-md text-sm leading-6 text-white/65">
-              Check your connection or try loading the game again.
-            </p>
-            <button
-              type="button"
-              onClick={startGame}
-              className="mt-5 min-h-11 rounded-full bg-cyan-300 px-6 font-extrabold text-slate-950 hover:bg-cyan-200"
+          {gameState === "loading" && (
+            <div
+              className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-slate-950/80 text-white backdrop-blur-sm"
+              role="status"
+              aria-live="polite"
             >
-              Try Again
-            </button>
-          </div>
-        )}
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-white/20 border-t-cyan-300" />
+              <div className="text-center">
+                <p className="font-bold">Loading {siteConfig.game.name}…</p>
+                <p className="mt-1 text-xs text-white/60">The first launch can take a few seconds.</p>
+              </div>
+            </div>
+          )}
+
+          {gameState === "error" && (
+            <div
+              className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-slate-950/90 px-6 text-center text-white"
+              role="alert"
+            >
+              <p className="font-heading text-xl font-black">The game is taking longer than expected.</p>
+              <p className="mt-2 max-w-md text-sm leading-6 text-white/65">
+                Check your connection or try loading the game again.
+              </p>
+              <button
+                type="button"
+                onClick={startGame}
+                className="mt-5 min-h-11 rounded-full bg-cyan-300 px-6 font-extrabold text-slate-950 hover:bg-cyan-200"
+              >
+                Try Again
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="mt-2 flex min-h-11 items-center justify-between gap-3">
