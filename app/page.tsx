@@ -1,240 +1,255 @@
-import { buildMetadata, buildVideoGameJsonLd } from "@/lib/seo";
-import Hero from "@/components/Hero";
-import SidebarLayout from "@/components/SidebarLayout";
-import SchemaMarkup from "@/components/SchemaMarkup";
+import Image from "next/image";
 import AdSlot from "@/components/AdSlot";
+import Hero from "@/components/Hero";
+import SchemaMarkup from "@/components/SchemaMarkup";
+import { buildMetadata, buildVideoGameJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site.config";
 
 export const metadata = buildMetadata({ path: "/" });
+
+const controls = [
+  ["WASD", "Move around and steer while at the helm"],
+  ["Mouse", "Look around and aim"],
+  ["Left click", "Fire while operating a cannon"],
+  ["F", "Interact with the helm, sails, and cannons"],
+];
+
+const features = [
+  {
+    title: "Crew-based combat",
+    text: "Share a crew code so friends can join the same ship and split responsibility for steering, sails, and cannons.",
+    icon: "⚓",
+  },
+  {
+    title: "Helper Bot",
+    text: "Playing alone is possible: a Helper Bot can take over a ship station while you focus on another role.",
+    icon: "🤖",
+  },
+  {
+    title: "Ship upgrades",
+    text: "Earn levels and gold during battles, then improve your ship and cannons for stronger performance.",
+    icon: "🛠",
+  },
+  {
+    title: "Multiple game modes",
+    text: "Choose Team Flags for team battles or Trader Mode for a larger, more open-ended server experience.",
+    icon: "🚩",
+  },
+  {
+    title: "Friends and clans",
+    text: "The game includes a friends list plus clan listings and clan chat for finding a regular crew.",
+    icon: "👥",
+  },
+  {
+    title: "Browser and mobile",
+    text: "Ships 3D is available in modern desktop and mobile browsers. Landscape mode is recommended on phones.",
+    icon: "🌐",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is Ships 3D free to play?",
+    answer:
+      "Yes. You can launch and play the browser version for free. The embedded game is operated by its original provider, so its account options and in-game features may change over time.",
+  },
+  {
+    question: "Do I need to download the game?",
+    answer:
+      "No standalone installation is required. Your browser will still download and cache game files when it launches, so the first load can take a few seconds.",
+  },
+  {
+    question: "Can I play with friends?",
+    answer:
+      "Yes. Create or share a crew code in the game so friends can join your ship. Coordinating the helm and cannons is one of the main parts of the experience.",
+  },
+  {
+    question: "Can I play on a phone or tablet?",
+    answer:
+      "Mobile browser support is available, but the interface is much clearer in landscape orientation. Use the fullscreen button when your browser supports it.",
+  },
+  {
+    question: "Do I need an account?",
+    answer:
+      "You can begin by entering a username. The game also offers register and sign-in options if you want to use its account features.",
+  },
+];
 
 export default function HomePage() {
   return (
     <>
       <SchemaMarkup jsonLd={buildVideoGameJsonLd()} />
       <Hero />
-      <SidebarLayout>
-       {/* Game introduction content */}
-       <section className="space-y-8">
-          {/* ── Game Introduction ── */}
-         <div>
-           <h2 className="font-heading font-bold text-2xl text-text-dark mb-3">
-              What is Ships 3D?
-           </h2>
-          <p className="text-text-dark/70 leading-relaxed mb-4">
-              Ships 3D is a multiplayer naval combat game that runs right in your browser — no download, no hassle. You pilot a warship across an open 3D ocean, facing real players from all over the world. Each session drops roughly 20 players into the same waters, and special modes can push that to 60 or even 90. The action is fast: you steer, angle your hull, and fire broadsides at enemy ships while cannonballs kick up spray and splinters fly across the deck.
-           </p>
-           <p className="text-text-dark/70 leading-relaxed mb-4">
-              What sets Ships 3D apart from traditional naval games is that each ship has multiple stations — the helm, the sails, the cannons — and you can walk around your vessel, pressing F to interact with each station. Too much to handle alone? A Helper Bot can take the wheel or man the guns, so solo players can still hold their own. Got a friend? Share a Crew Code and they'll spawn onto your ship — you steer, they shoot. The coordination makes a huge difference.
-           </p>
-           <p className="text-text-dark/70 leading-relaxed mb-4">
-              Developed by <strong>Yp3d</strong> (ASDF Games) and first released in 2021, Ships 3D runs on Unity WebGL and keeps getting updates with new maps, ship types, and balance changes. The game offers several ship classes to choose from — some built for speed, others packed with extra cannons for heavy firepower. Pick the one that fits your playstyle, or switch it up each match.
-           </p>
-           <p className="text-text-dark/70 leading-relaxed">
-              Bottom line: Ships 3D is the kind of game you click and start playing in seconds. Easy to learn, but winning takes real teamwork. Whether you have 10 minutes during lunch or a whole evening to squad up with friends, just open your browser and set sail.
-           </p>
-         </div>
 
-          {/* ── Image placeholder 1 ── */}
-         <img
-           src="/images/ships3D-desc-1.jpeg"
-            alt="Ships 3D gameplay screenshot showing multiple warships exchanging cannon fire on the open sea, with water splashes and explosion effects"
-           className="w-full rounded-xl shadow-lg"
-         />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <section className="mx-auto max-w-3xl" aria-labelledby="about-game">
+          <p className="section-kicker">About the game</p>
+          <h1 id="about-game" className="section-title">
+            What is Ships 3D?
+          </h1>
+          <div className="mt-5 space-y-4 text-base leading-8 text-text-dark/75 sm:text-lg">
+            <p>
+              Ships 3D is an online naval combat game built around shared ship controls.
+              Instead of controlling everything from a single screen, you move around the
+              deck and interact with the helm, sails, and cannons. Standard battles can
+              include up to 20 players, while larger modes support bigger servers.
+            </p>
+            <p>
+              The game was developed by Yp3d / ASDF Games and was listed for browser release
+              in May 2022. You can play solo with a Helper Bot or invite friends using a crew
+              code. This website is an independent fan site and does not claim ownership of
+              the game.
+            </p>
+          </div>
 
-          {/* ── How to Play ── */}
-         <div>
-           <h2 className="font-heading font-bold text-2xl text-text-dark mb-3">
-              How to Play Ships 3D
-           </h2>
-          <p className="text-text-dark/70 leading-relaxed mb-4">
-              You spawn on an open ocean map next to your chosen ship. To win, you need to control your ship's movement and positioning while lining up shots at enemy vessels. Beyond cannons, the game also gives you muskets and swords for close-quarters boarding action. The best way to play Ships 3D is with a crew — one person steers, another fires, someone keeps lookout. That said, you can absolutely go it alone with the Helper Bot backing you up.
-           </p>
-           <h3 className="font-heading font-bold text-lg text-text-dark mb-2 mt-6">
-              Keyboard Controls
-           </h3>
-           <div className="overflow-x-auto mb-6">
-             <table className="w-full text-sm text-text-dark/70 border-collapse">
-               <thead>
-                 <tr className="bg-surface border-b border-text-dark/10">
-                    <th className="text-left py-2 px-3 font-semibold">Key</th>
-                    <th className="text-left py-2 px-3 font-semibold">Action</th>
-                 </tr>
-               </thead>
-               <tbody>
-                <tr className="border-b border-text-dark/5">
-                   <td className="py-2 px-3 font-mono">WASD / Arrow Keys</td>
-                   <td className="py-2 px-3">Move / Steer</td>
-                </tr>
-                <tr className="border-b border-text-dark/5">
-                   <td className="py-2 px-3 font-mono">Mouse move</td>
-                   <td className="py-2 px-3">Look around / Aim</td>
-                </tr>
-                <tr className="border-b border-text-dark/5">
-                   <td className="py-2 px-3 font-mono">Left mouse click</td>
-                   <td className="py-2 px-3">Fire cannons</td>
-                </tr>
-                 <tr className="border-b border-text-dark/5">
-                   <td className="py-2 px-3 font-mono">F</td>
-                    <td className="py-2 px-3">Interact with helm, sails, cannons, flags</td>
-                 </tr>
-                 <tr className="border-b border-text-dark/5">
-                   <td className="py-2 px-3 font-mono">Tab</td>
-                    <td className="py-2 px-3">Switch view (first-person / third-person) / manage ship features</td>
-                 </tr>
-               </tbody>
-             </table>
-           </div>
-           <h3 className="font-heading font-bold text-lg text-text-dark mb-2">
-              Touchscreen Controls
-           </h3>
-           <p className="text-text-dark/70 leading-relaxed mb-4">
-              Ships 3D works on phones and tablets too. The game automatically adapts to touch with virtual joysticks and on-screen buttons — same controls, same gameplay. Just tap to fire and steer.
-           </p>
-           <h3 className="font-heading font-bold text-lg text-text-dark mb-2 mt-6">
-              Game Modes
-           </h3>
-           <p className="text-text-dark/70 leading-relaxed">
-             Ships 3D has two main modes. <strong>Team Flags</strong> is a classic team battle — two crews fight for control of the flag, pure coordination and firepower. <strong>Trader Mode</strong> is a massive 90-player economy mode where you trade goods, escort convoys, and battle rival merchants on the high seas. It's more strategic and a lot more chaotic. Both modes earn you gold and XP to upgrade your ship and cannons.
-           </p>
-           <h3 className="font-heading font-bold text-lg text-text-dark mb-2 mt-6">
-              Strategy Tips for Beginners
-           </h3>
-           <p className="text-text-dark/70 leading-relaxed">
-              Positioning matters more than raw firepower. Keep your broadside facing the enemy while minimizing how much of your hull they can hit. In Team Flags, stick close to at least one teammate — a lone ship is an easy target. Spend your first few rounds experimenting with different ship classes to find one that suits how you like to play. And don't forget to use the lookout station: spotting enemies before they spot you is half the battle.
-           </p>
-         </div>
-
-          {/* ── Image placeholder 2 ── */}
-         <img
-           src="/images/ships3D-desc-2.jpeg"
-            alt="Ships 3D in-game interface showing helm, sail, and cannon interaction prompts alongside keyboard control hints"
-           className="w-full rounded-xl shadow-lg"
-         />
-
-          {/* ── Key Features ── */}
-         <div>
-           <h2 className="font-heading font-bold text-2xl text-text-dark mb-3">
-              Key Features
-           </h2>
-           <ul className="space-y-4 text-text-dark/70 leading-relaxed">
-             <li>
-                <strong className="text-text-dark font-semibold">· Realistic sailing physics.</strong>
-                Your ship isn't just a box sliding on water — wind direction, sail positioning, and hull angle all affect speed and turning radius. Learn to use the wind, and your aim will thank you.
-             </li>
-             <li>
-                <strong className="text-text-dark font-semibold">· Cooperative crew play.</strong>
-                Share a Crew Code and friends join your ship in seconds. One steers, another fires — good coordination beats random players every time. The Helper Bot can fill any empty station too.
-             </li>
-             <li>
-               <strong className="text-text-dark font-semibold">· Ship and weapon upgrades.</strong>
-               Sink enemies to earn gold and XP, then spend them on upgrades — faster speed, stronger hulls, bigger cannons, and better accuracy. The higher your level, the more firepower you bring to the fight.
-                Upgrade paths vary by ship class, so choose upgrades that match how you play.
-             </li>
-             <li>
-               <strong className="text-text-dark font-semibold">· Clans and friends list.</strong>
-                Built-in clan system lets you create or join a crew and play with the same squad regularly. There's also a friends list so you don't need to share codes every time. Clan chat makes it easy to coordinate matches without switching to external apps.
-             </li>
-             <li>
-               <strong className="text-text-dark font-semibold">· Free to play, works everywhere.</strong>
-                Play on PC, Mac, phone, or tablet — all through the browser. No installs, no fees, no barrier to entry. Progress syncs across devices too, so you can pick up where you left off whether you are on desktop or mobile.
-             </li>
-           </ul>
-         </div>
-
-          {/* ── FAQ ── */}
-         <div>
-           <h2 className="font-heading font-bold text-2xl text-text-dark mb-3">
-              FAQ
-           </h2>
-           <div className="space-y-5">
-             <div>
-               <h3 className="font-heading font-semibold text-lg text-text-dark mb-1">
-                  Is Ships 3D free to play?
-               </h3>
-              <p className="text-text-dark/70 leading-relaxed">
-                  Yes, completely free. No payment, no premium currency, no "play 10 minutes then hit a paywall" nonsense. Just open your browser and play. All maps, ship classes, and game modes are available from the start — nothing is locked behind a purchase.
-               </p>
-             </div>
-             <div>
-               <h3 className="font-heading font-semibold text-lg text-text-dark mb-1">
-                  Can I play Ships 3D with friends?
-               </h3>
-              <p className="text-text-dark/70 leading-relaxed">
-                  Yes. Generate a Crew Code in-game and share it with friends — they'll join your ship and take a station. You steer while they fire, or swap roles. Way more effective than sailing solo. You can also join a clan to find regular squadmates without sharing a code every time.
-               </p>
-             </div>
-             <div>
-               <h3 className="font-heading font-semibold text-lg text-text-dark mb-1">
-                  Can I play Ships 3D on mobile?
-               </h3>
-               <p className="text-text-dark/70 leading-relaxed">
-                  Absolutely. Ships 3D runs on phones and tablets with full touch controls — virtual joysticks and on-screen buttons. Aiming is a bit trickier on a small screen compared to a mouse, but it's perfectly fine for Trader Mode or casual matches.
-               </p>
-             </div>
-             <div>
-               <h3 className="font-heading font-semibold text-lg text-text-dark mb-1">
-                  What game modes are available?
-               </h3>
-              <p className="text-text-dark/70 leading-relaxed">
-                  Two main modes: <strong>Team Flags</strong> — capture-the-flag naval battles that reward coordination and aggression, and <strong>Trader Mode</strong> — a 90-player economy mode focused on trading, escorting, and merchant warfare. Both support ship and weapon upgrades. Trader Mode is especially good for earning gold quickly since you can focus on trade routes instead of pure combat.
-               </p>
-             </div>
-             <div>
-               <h3 className="font-heading font-semibold text-lg text-text-dark mb-1">
-                  Is Ships 3D hard to learn?
-               </h3>
-              <p className="text-text-dark/70 leading-relaxed">
-                  Not at all. WASD to steer, mouse to aim, left-click to fire — you'll get the hang of it in 10 minutes. The tricky part is coordinating with your crew, like angining the hull just right so your gunner can hit the enemy's exposed side. There's also a tutorial mission that walks you through the basics of sailing, combat, and using ship stations.
-               </p>
-             </div>
-             <div>
-               <h3 className="font-heading font-semibold text-lg text-text-dark mb-1">
-                  Do I need to download Ships 3D?
-               </h3>
-               <p className="text-text-dark/70 leading-relaxed">
-                  Nope. Ships 3D is a pure web game built on Unity WebGL. It runs entirely in your browser — no installation, no disk space used, and it works on practically any device with a modern browser.
-               </p>
-             </div>
-             <div>
-               <h3 className="font-heading font-semibold text-lg text-text-dark mb-1">
-                  Is it fun playing alone?
-               </h3>
-               <p className="text-text-dark/70 leading-relaxed">
-                  It can be! The Helper Bot fills in as your AI crewmate, handling the helm or cannons while you focus on the other. Plus every server is full of real players, so you'll run into action fast. Once you're comfortable, join a clan and you'll have a regular crew in no time.
-               </p>
-             </div>
-           </div>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href={siteConfig.game.embedUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-extrabold text-white hover:bg-secondary"
+            >
+              Developer game page
+            </a>
+            <a
+              href="https://www.crazygames.com/game/ships-3d"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center rounded-full border border-text-dark/15 bg-white px-5 text-sm font-extrabold text-text-dark hover:border-primary/40 hover:text-primary"
+            >
+              Game details and release info
+            </a>
           </div>
         </section>
 
-        {/* ── YouTube Gameplay Video ── */}
-        {siteConfig.youtube.enabled && siteConfig.youtube.videoId && (
-          <section className="my-10">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="font-heading font-bold text-2xl text-text-dark mb-3">
-                Ships 3D Gameplay Video
+        <figure className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-3xl bg-slate-900 shadow-xl">
+          <Image
+            src="/images/ships3D-desc-2.jpeg"
+            alt="Ships 3D cannon view during a Team Flags battle, with enemy ships, team scores, and firing controls visible"
+            width={1888}
+            height={874}
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="h-auto w-full"
+          />
+          <figcaption className="px-5 py-3 text-sm text-white/65">
+            Operating a cannon during a large Team Flags match.
+          </figcaption>
+        </figure>
+
+        <section id="how-to-play" className="mx-auto mt-20 max-w-5xl scroll-mt-24" aria-labelledby="how-heading">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div>
+              <p className="section-kicker">Quick start</p>
+              <h2 id="how-heading" className="section-title">
+                How to play
               </h2>
-              <p className="text-text-dark/70 leading-relaxed mb-4">
-                Watch how the battles unfold — this video walks through the basics of sailing,
-                cannon aiming, crew coordination, and what to expect in Team Flags and Trader Mode.
+              <p className="mt-5 max-w-xl text-base leading-8 text-text-dark/75 sm:text-lg">
+                Start by entering a username and choosing a game mode. Once you are on a
+                ship, use nearby stations instead of trying to control everything at once.
+                Keep your broadside lined up with opponents and coordinate shots with your crew.
               </p>
-              <div className="relative w-full rounded-xl2 overflow-hidden shadow-lg bg-gray-100" style={{ aspectRatio: "16 / 9" }}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${siteConfig.youtube.videoId}`}
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Ships 3D Gameplay Video"
-                  loading="lazy"
-                />
+
+              <div className="mt-7 rounded-2xl border border-amber-900/10 bg-amber-50 p-5">
+                <p className="font-extrabold text-amber-950">Beginner tip</p>
+                <p className="mt-1 text-sm leading-6 text-amber-950/75">
+                  Start with the Helper Bot enabled. Learn one station at a time, then invite
+                  a friend when you are comfortable steering or aiming.
+                </p>
               </div>
+            </div>
+
+            <div className="overflow-hidden rounded-3xl border border-text-dark/10 bg-white shadow-sm">
+              <div className="border-b border-text-dark/10 px-5 py-4 sm:px-6">
+                <h3 className="font-heading text-xl font-black text-text-dark">Keyboard controls</h3>
+              </div>
+              <div className="divide-y divide-text-dark/10">
+                {controls.map(([key, action]) => (
+                  <div key={key} className="grid grid-cols-[7rem_1fr] gap-4 px-5 py-4 sm:grid-cols-[9rem_1fr] sm:px-6">
+                    <kbd className="w-fit rounded-lg border border-text-dark/10 bg-background px-2.5 py-1 font-mono text-sm font-bold text-primary shadow-sm">
+                      {key}
+                    </kbd>
+                    <p className="text-sm leading-6 text-text-dark/70">{action}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" className="mt-20 scroll-mt-24" aria-labelledby="features-heading">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="section-kicker">Why it stands out</p>
+            <h2 id="features-heading" className="section-title">
+              Built for a real crew
+            </h2>
+            <p className="mt-4 text-base leading-7 text-text-dark/70 sm:text-lg">
+              The most interesting part of Ships 3D is not a single weapon or ship class;
+              it is the way several players share one vessel.
+            </p>
+          </div>
+
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => (
+              <article
+                key={feature.title}
+                className="rounded-3xl border border-text-dark/10 bg-white p-6 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-xl" aria-hidden="true">
+                  {feature.icon}
+                </span>
+                <h3 className="mt-5 font-heading text-xl font-black text-text-dark">{feature.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-text-dark/70">{feature.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="faq" className="mx-auto mt-20 max-w-3xl scroll-mt-24" aria-labelledby="faq-heading">
+          <p className="section-kicker">Common questions</p>
+          <h2 id="faq-heading" className="section-title">
+            Ships 3D FAQ
+          </h2>
+          <div className="mt-7 divide-y divide-text-dark/10 overflow-hidden rounded-3xl border border-text-dark/10 bg-white">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="group px-5 py-1 sm:px-6">
+                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 py-4 font-heading text-lg font-extrabold text-text-dark">
+                  {faq.question}
+                  <span className="text-2xl font-light text-primary transition-transform group-open:rotate-45" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <p className="max-w-2xl pb-5 text-sm leading-7 text-text-dark/70">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {siteConfig.youtube.enabled && siteConfig.youtube.videoId && (
+          <section className="mx-auto mt-20 max-w-4xl" aria-labelledby="video-heading">
+            <div className="text-center">
+              <p className="section-kicker">Watch before you play</p>
+              <h2 id="video-heading" className="section-title">
+                Ships 3D gameplay
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-text-dark/70">
+                See how ship stations, crew coordination, and cannon combat work in a full match.
+              </p>
+            </div>
+            <div className="relative mt-7 aspect-video w-full overflow-hidden rounded-3xl bg-slate-900 shadow-xl">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${siteConfig.youtube.videoId}`}
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Ships 3D gameplay video"
+                loading="lazy"
+              />
             </div>
           </section>
         )}
 
-        {/* Bottom banner ad */}
         <AdSlot type="banner" className="my-8" />
-      </SidebarLayout>
+      </div>
     </>
   );
 }

@@ -9,14 +9,13 @@ export default function ContactPage() {
       <h1 className="font-heading font-extrabold text-3xl sm:text-4xl text-text-dark mb-4">
         Contact Us
       </h1>
-     <p className="text-text-dark/70 leading-relaxed mb-8">
-        Got a bug to report, a feature idea, or just want to say hi? Drop us a
-        line below. We read every message.
-     </p>
+      <p className="mb-8 leading-relaxed text-text-dark/70">
+        Found incorrect information or having trouble launching the game?
+        Send the site operator an email below.
+      </p>
 
-     {/* Email contact — will be replaced with a form later */}
-     <div className="bg-surface rounded-xl p-6 border border-gray-100">
-        <p className="text-sm text-text-dark/60 mb-2">Shoot us an email:</p>
+      <div className="rounded-2xl border border-text-dark/10 bg-white p-6 shadow-sm">
+        <p className="mb-2 text-sm text-text-dark/60">Email:</p>
        <a
          href={`mailto:${siteConfig.contact.email}`}
          className="text-primary font-medium text-lg hover:underline"
@@ -25,10 +24,10 @@ export default function ContactPage() {
        </a>
      </div>
 
-     <p className="mt-8 text-sm text-text-dark/40">
-        Whether you are reporting a broken game link, suggesting a new feature,
-        or reaching out about partnerships — we aim to reply within 48 hours.
-     </p>
+      <p className="mt-8 text-sm leading-6 text-text-dark/60">
+        Include your browser and device type when reporting a loading problem.
+        Please contact the game developer directly for account or in-game support.
+      </p>
     </div>
   );
 }

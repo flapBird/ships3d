@@ -46,6 +46,8 @@ export function buildMetadata({ title, description, path }: PageSeoInput): Metad
       description: pageDescription,
       images: [siteConfig.seo.ogImage],
     },
+    authors: [{ name: siteConfig.siteName, url: siteConfig.domain }],
+    creator: siteConfig.siteName,
     ...(siteConfig.gscVerification
       ? { verification: { google: siteConfig.gscVerification } }
       : {}),
@@ -65,7 +67,12 @@ export function buildVideoGameJsonLd() {
     applicationCategory: "Game",
     operatingSystem: "Web Browser",
     description: siteConfig.seo.description,
-    url: siteConfig.domain,
+    url: siteConfig.game.embedUrl,
     image: `${siteConfig.domain}${siteConfig.seo.ogImage}`,
+    publisher: {
+      "@type": "Organization",
+      name: "Yp3d / ASDF Games",
+    },
+    mainEntityOfPage: siteConfig.domain,
   };
 }

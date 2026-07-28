@@ -22,8 +22,8 @@ export const siteConfig = {
     /** Comma-separated keywords for the homepage. */
     keywords: ["ships 3d", "play ships 3d online", "ships 3d game", "naval battle game", "multiplayer ship game", "free online ship game", "ships 3d browser"],
 
-    /** Social sharing image, 1200x630px. Replace /public/og-image.png. */
-    ogImage: "/og-image.png",
+    /** Dynamically generated 1200x630 social sharing image. */
+    ogImage: "/opengraph-image",
 
     /** Twitter/X handle, can be left empty. */
     twitterHandle: "",
@@ -49,7 +49,7 @@ export const siteConfig = {
     ageRating: "Everyone",
 
     /** Attribution displayed below the game and in the footer. */
-    sourceAttribution: "Game by Yp3d",
+    sourceAttribution: "Game by Yp3d / ASDF Games",
   },
 
   /** YouTube gameplay video section on the homepage. Set videoId to show. */
@@ -62,16 +62,15 @@ export const siteConfig = {
 
   theme: {
     /**
-     * Bright & playful color palette.
-     * Adjust per-game to match its visual style, but keep the overall bright tone.
+     * RGB color channels injected as CSS custom properties by the root layout.
      */
-    primary: "#2a6370",
-    secondary: "#3c7d89",
-    background: "#f8f7f5",
-    surface: "#efeae4",
-    textDark: "#292524",
+    primary: "19 92 111",
+    secondary: "14 116 144",
+    background: "244 247 248",
+    surface: "232 241 243",
+    textDark: "24 39 45",
     fontHeading: "'Nunito', sans-serif",
-    fontBody: "'Quicksand', sans-serif",
+    fontBody: "'Nunito', sans-serif",
   },
 
   contact: {

@@ -2,19 +2,13 @@ import GameEmbed from "./GameEmbed";
 
 export default function Hero() {
   return (
-    <section className="hero-gradient relative overflow-hidden pt-8 pb-6 sm:pt-12 sm:pb-8 px-4">
-      {/* Floating blob decorations */}
-      <div className="blob-decoration blob-decoration--1" />
-      <div className="blob-decoration blob-decoration--2" />
-      <div className="blob-decoration blob-decoration--3" />
+    <section id="play" className="hero-gradient relative scroll-mt-24 overflow-hidden px-4 pb-8 pt-6 sm:pb-10 sm:pt-8">
+      <div className="ocean-glow ocean-glow--left" aria-hidden="true" />
+      <div className="ocean-glow ocean-glow--right" aria-hidden="true" />
 
-     <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* SEO H1 — hidden visually, read by search engines and screen readers */}
-        <h1 className="sr-only">Play Ships 3D Online Free — Multiplayer Naval Battle Game</h1>
-
-       {/* Game embed (idle launch screen visible immediately) */}
-       <GameEmbed />
-     </div>
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <GameEmbed />
+      </div>
     </section>
   );
 }

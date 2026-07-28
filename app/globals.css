@@ -2,68 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base body styles */
-body {
-  background-color: #ede6de;
+html {
   scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  background: rgb(var(--color-background));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hero gradient background: soft radial transition from primary to background */
-.hero-gradient {
-  background: radial-gradient(
-    ellipse 80% 60% at 50% 40%,
-    rgba(42, 99, 112, 0.06),
-    rgba(60, 125, 137, 0.03) 50%,
-    #ede6de 100%
-  );
+::selection {
+  background: rgb(var(--color-secondary) / 0.22);
 }
 
-/* Floating blob decoration for Hero background */
-.blob-decoration {
+.hero-gradient {
+  background:
+    linear-gradient(180deg, rgba(2, 15, 26, 0.2), rgba(2, 15, 26, 0.86)),
+    radial-gradient(circle at 50% 0%, #176b80 0%, #0d4055 35%, #061c2e 75%, #041523 100%);
+}
+
+.hero-gradient::after {
   position: absolute;
-  border-radius: 50%;
-  opacity: 0.07;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 70px;
+  background:
+    radial-gradient(80px 35px at 10% 100%, rgb(var(--color-background)) 98%, transparent 100%),
+    radial-gradient(130px 48px at 28% 110%, rgb(var(--color-background)) 98%, transparent 100%),
+    radial-gradient(110px 40px at 51% 108%, rgb(var(--color-background)) 98%, transparent 100%),
+    radial-gradient(145px 50px at 75% 112%, rgb(var(--color-background)) 98%, transparent 100%),
+    radial-gradient(95px 36px at 94% 105%, rgb(var(--color-background)) 98%, transparent 100%);
+  content: "";
+  opacity: 0.12;
   pointer-events: none;
 }
 
-.blob-decoration--1 {
-  width: 260px;
-  height: 260px;
-  top: 10%;
-  left: 5%;
-  background: radial-gradient(circle, #2a6370 0%, transparent 70%);
-  animation: float 8s ease-in-out infinite;
-  animation-delay: 0s;
+.ocean-glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 9999px;
+  background: rgb(34 211 238 / 0.14);
+  filter: blur(90px);
+  pointer-events: none;
 }
 
-.blob-decoration--2 {
-  width: 200px;
-  height: 200px;
-  top: 20%;
-  right: 8%;
-  background: radial-gradient(circle, #3c7d89 0%, transparent 70%);
-  animation: float 8s ease-in-out infinite;
-  animation-delay: -4s;
+.ocean-glow--left {
+  top: -220px;
+  left: -160px;
 }
 
-.blob-decoration--3 {
-  width: 180px;
-  height: 180px;
-  bottom: 15%;
-  left: 12%;
-  background: radial-gradient(circle, #2a6370 0%, transparent 70%);
-  animation: float 8s ease-in-out infinite;
-  animation-delay: -2s;
+.ocean-glow--right {
+  right: -180px;
+  bottom: -180px;
 }
 
-/* Keyframes for floating animation */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
+.game-shell:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  border-radius: 0;
+  aspect-ratio: auto !important;
+}
+
+@layer components {
+  .section-kicker {
+    @apply mb-2 text-sm font-black uppercase tracking-[0.16em] text-primary;
   }
-  50% {
-    transform: translateY(-16px) scale(1.03);
+
+  .section-title {
+    @apply font-heading text-3xl font-black tracking-tight text-text-dark sm:text-4xl;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -8,14 +8,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#2a6370',
-        secondary: '#3c7d89',
-        surface: '#efeae4',
-        'text-dark': '#292524',
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        background: 'rgb(var(--color-background) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        'text-dark': 'rgb(var(--color-text-dark) / <alpha-value>)',
       },
       fontFamily: {
         heading: ['var(--font-nunito)', 'sans-serif'],
-        body: ['var(--font-quicksand)', 'sans-serif'],
+        body: ['var(--font-nunito)', 'sans-serif'],
       },
       borderRadius: {
         xl2: '1.5rem',
