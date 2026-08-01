@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/site.config";
 import { env } from "@/lib/env";
-import { buildMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -16,8 +15,6 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.domain),
-  ...buildMetadata({ path: "/" }),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

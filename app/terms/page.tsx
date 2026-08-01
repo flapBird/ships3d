@@ -4,6 +4,8 @@ import LegalPage from "@/components/LegalPage";
 
 export const metadata = buildMetadata({ title: "Terms & Conditions", path: "/terms" });
 
+const [contactEmailName, contactEmailDomain] = siteConfig.contact.email.split("@");
+
 export default function TermsPage() {
   return (
     <LegalPage title="Terms &amp; Conditions">
@@ -38,7 +40,12 @@ export default function TermsPage() {
       </section>
       <section>
         <h2 className="font-heading font-bold text-xl text-text-dark mt-8 mb-3">8. Contact</h2>
-        <p>For questions about these Terms, contact us at{" "}<a href={`mailto:${siteConfig.contact.email}`} className="text-primary underline">{siteConfig.contact.email}</a>.</p>
+        <p>
+          For questions about these Terms, contact us at{" "}
+          <span className="text-primary">
+            {contactEmailName}<span>@</span>{contactEmailDomain}
+          </span>.
+        </p>
       </section>
     </LegalPage>
   );

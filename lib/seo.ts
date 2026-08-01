@@ -18,7 +18,12 @@ export function buildMetadata({ title, description, path }: PageSeoInput): Metad
       ? `${title} | ${siteConfig.siteName}`
       : siteConfig.siteName;
   const pageDescription = description ?? siteConfig.seo.description;
-  const canonical = `${siteConfig.domain}${path}`;
+  // The homepage is served at the root URL with a trailing slash. Keep
+  // subpage URLs in their existing format instead of normalizing the whole site.
+  const canonical = isHome
+    ? `${siteConfig.domain}/`
+    : `${siteConfig.domain}${path}`;
+  const ogImage = `${siteConfig.domain}${siteConfig.seo.ogImage}`;
 
   return {
     title: pageTitle,
@@ -33,7 +38,7 @@ export function buildMetadata({ title, description, path }: PageSeoInput): Metad
       siteName: siteConfig.siteName,
       images: [
         {
-          url: siteConfig.seo.ogImage,
+          url: ogImage,
           width: 1200,
           height: 630,
         },
@@ -44,7 +49,7 @@ export function buildMetadata({ title, description, path }: PageSeoInput): Metad
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      images: [siteConfig.seo.ogImage],
+      images: [ogImage],
     },
     authors: [{ name: siteConfig.siteName, url: siteConfig.domain }],
     creator: siteConfig.siteName,

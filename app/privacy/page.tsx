@@ -4,6 +4,8 @@ import LegalPage from "@/components/LegalPage";
 
 export const metadata = buildMetadata({ title: "Privacy Policy", path: "/privacy" });
 
+const [contactEmailName, contactEmailDomain] = siteConfig.contact.email.split("@");
+
 export default function PrivacyPage() {
   return (
     <LegalPage title="Privacy Policy">
@@ -109,12 +111,9 @@ export default function PrivacyPage() {
         </h2>
         <p>
           For questions about this Privacy Policy, contact us at{" "}
-          <a
-            href={`mailto:${siteConfig.contact.email}`}
-            className="text-primary underline"
-          >
-            {siteConfig.contact.email}
-          </a>
+          <span className="text-primary">
+            {contactEmailName}<span>@</span>{contactEmailDomain}
+          </span>
           .
         </p>
       </section>
