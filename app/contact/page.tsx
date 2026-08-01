@@ -3,6 +3,8 @@ import { siteConfig } from "@/lib/site.config";
 
 export const metadata = buildMetadata({ title: "Contact", path: "/contact" });
 
+const [contactEmailName, contactEmailDomain] = siteConfig.contact.email.split("@");
+
 export default function ContactPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -16,13 +18,10 @@ export default function ContactPage() {
 
       <div className="rounded-2xl border border-text-dark/10 bg-white p-6 shadow-sm">
         <p className="mb-2 text-sm text-text-dark/60">Email:</p>
-       <a
-         href={`mailto:${siteConfig.contact.email}`}
-         className="text-primary font-medium text-lg hover:underline"
-       >
-         {siteConfig.contact.email}
-       </a>
-     </div>
+        <span className="text-primary text-lg font-medium">
+          {contactEmailName}<span>@</span>{contactEmailDomain}
+        </span>
+      </div>
 
       <p className="mt-8 text-sm leading-6 text-text-dark/60">
         Include your browser and device type when reporting a loading problem.
