@@ -1,3 +1,4 @@
+import NativeAd from "@/components/NativeAd";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site.config";
 
@@ -31,6 +32,8 @@ export default function AboutPage() {
           please use the Contact page so we can review it.
         </p>
       </div>
+
+      <NativeAd className="mt-12" />
     </div>
   );
 }

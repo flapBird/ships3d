@@ -1,6 +1,6 @@
 import Image from "next/image";
-import AdSlot from "@/components/AdSlot";
 import Hero from "@/components/Hero";
+import NativeAd from "@/components/NativeAd";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import { buildMetadata, buildVideoGameJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site.config";
@@ -176,6 +176,8 @@ export default function HomePage() {
           </div>
         </section>
 
+        <NativeAd className="my-16" />
+
         <section id="features" className="mt-20 scroll-mt-24" aria-labelledby="features-heading">
           <div className="mx-auto max-w-3xl text-center">
             <p className="section-kicker">Why it stands out</p>
@@ -247,8 +249,6 @@ export default function HomePage() {
             </div>
           </section>
         )}
-
-        <AdSlot type="banner" className="my-8" />
       </div>
     </>
   );

@@ -1,3 +1,4 @@
+import NativeAd from "@/components/NativeAd";
 import { siteConfig } from "@/lib/site.config";
 
 interface LegalPageProps {
@@ -22,6 +23,8 @@ export default function LegalPage({ title, children }: LegalPageProps) {
           {children}
         </div>
       </article>
+
+      <NativeAd className="mt-12" />
     </div>
   );
 }

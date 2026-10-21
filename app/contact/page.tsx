@@ -1,3 +1,4 @@
+import NativeAd from "@/components/NativeAd";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site.config";
 
@@ -27,6 +28,8 @@ export default function ContactPage() {
         Include your browser and device type when reporting a loading problem.
         Please contact the game developer directly for account or in-game support.
       </p>
+
+      <NativeAd className="mt-10" />
     </div>
   );
 }
