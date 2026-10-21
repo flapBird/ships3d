@@ -2,7 +2,12 @@ import NativeAd from "@/components/NativeAd";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site.config";
 
-export const metadata = buildMetadata({ title: "Contact", path: "/contact" });
+export const metadata = buildMetadata({
+  title: "Contact",
+  description:
+    "Contact ships3d.xyz with corrections, broken-game reports, or questions about the Ships 3D guides and browser build.",
+  path: "/contact",
+});
 
 const [contactEmailName, contactEmailDomain] = siteConfig.contact.email.split("@");
 

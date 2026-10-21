@@ -76,6 +76,74 @@ body {
   .section-title {
     @apply font-heading text-3xl font-black tracking-tight text-text-dark sm:text-4xl;
   }
+
+  .guide-content {
+    @apply text-base leading-8 text-text-dark/75;
+  }
+
+  .guide-content > * + * {
+    @apply mt-5;
+  }
+
+  .guide-content h2 {
+    @apply mt-10 scroll-mt-24 font-heading text-2xl font-black tracking-tight text-text-dark sm:text-3xl;
+  }
+
+  .guide-content h3 {
+    @apply mt-8 scroll-mt-24 font-heading text-xl font-black text-text-dark;
+  }
+
+  .guide-content p {
+    @apply leading-8;
+  }
+
+  .guide-content ul {
+    @apply list-disc space-y-2 pl-5 marker:text-primary;
+  }
+
+  .guide-content ol {
+    @apply list-decimal space-y-2 pl-5 marker:font-bold marker:text-primary;
+  }
+
+  .guide-content a {
+    @apply font-semibold text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:decoration-primary;
+  }
+
+  .guide-content strong {
+    @apply font-extrabold text-text-dark;
+  }
+
+  .guide-content kbd {
+    @apply rounded-md border border-text-dark/10 bg-white px-1.5 py-0.5 font-mono text-[0.8em] font-bold text-primary shadow-sm;
+  }
+
+  .guide-content blockquote {
+    @apply rounded-2xl border-l-4 border-primary/40 bg-white px-5 py-4 text-text-dark/75 shadow-sm;
+  }
+
+  .guide-content table {
+    @apply w-full min-w-[34rem] border-collapse text-left text-sm;
+  }
+
+  .guide-content th {
+    @apply border-b border-text-dark/10 bg-surface px-4 py-3 font-extrabold text-text-dark;
+  }
+
+  .guide-content td {
+    @apply border-b border-text-dark/10 px-4 py-3 align-top leading-6;
+  }
+
+  .guide-table-wrap {
+    @apply -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0;
+  }
+
+  .guide-note {
+    @apply rounded-2xl border border-amber-900/10 bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-950/80;
+  }
+
+  .guide-note strong {
+    @apply text-amber-950;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

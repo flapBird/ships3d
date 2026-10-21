@@ -11,13 +11,13 @@ export const siteConfig = {
 
   seo: {
     /** Homepage <title>. Used as-is on the homepage. */
-    title: "Play Ships 3D Online Free | Ships 3D",
+    title: "Ships 3D – Play Free Online Multiplayer Naval Combat",
 
     /**
      * Homepage meta description, keep under 160 characters.
      * Describe what the game is and that it's free to play online.
      */
-    description: "Play Ships 3D online free — a multiplayer naval combat game with sailing physics. Steer your ship, fire cannons, and battle worldwide in your browser.",
+    description: "Play Ships 3D free in your browser — a multiplayer naval combat game where you steer, set sails, and fire cannons with a crew. No download.",
 
     /** Comma-separated keywords for the homepage. */
     keywords: ["ships 3d", "play ships 3d online", "ships 3d game", "naval battle game", "multiplayer ship game", "free online ship game", "ships 3d browser"],
@@ -81,6 +81,11 @@ export const siteConfig = {
   legal: {
     /** Last updated date for Privacy / Terms pages. */
     lastUpdated: "2026-07-10",
+  },
+
+  content: {
+    /** Last time the guides and homepage copy were reviewed. */
+    updated: "2026-10-21",
   },
 
   /** Google Search Console verification code. Leave empty to skip. */

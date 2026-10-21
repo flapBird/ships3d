@@ -15,6 +15,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.domain),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

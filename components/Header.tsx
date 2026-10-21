@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/site.config";
 const navLinks = [
   { href: "/#play", label: "Play" },
   { href: "/#how-to-play", label: "How to Play" },
+  { href: "/guides", label: "Guides" },
   { href: "/#features", label: "Features" },
   { href: "/#faq", label: "FAQ" },
 ];

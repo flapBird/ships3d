@@ -2,7 +2,12 @@ import NativeAd from "@/components/NativeAd";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site.config";
 
-export const metadata = buildMetadata({ title: "About", path: "/about" });
+export const metadata = buildMetadata({
+  title: "About",
+  description:
+    "Who runs ships3d.xyz, how this independent Ships 3D fan site is put together, and how the embedded browser game is attributed.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

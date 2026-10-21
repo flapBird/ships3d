@@ -2,7 +2,12 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site.config";
 import LegalPage from "@/components/LegalPage";
 
-export const metadata = buildMetadata({ title: "Terms & Conditions", path: "/terms" });
+export const metadata = buildMetadata({
+  title: "Terms & Conditions",
+  description:
+    "Terms for using ships3d.xyz, including third-party game content, intellectual property, warranties, and liability.",
+  path: "/terms",
+});
 
 const [contactEmailName, contactEmailDomain] = siteConfig.contact.email.split("@");
 
